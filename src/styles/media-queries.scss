@@ -1,0 +1,74 @@
+@media (max-width: 600px) {
+    .navLinks {
+        width: 80%;
+        margin: 10px;
+    }
+
+
+}
+
+@media (max-width: 400px) {
+    .navLinks {
+        width: 100%;
+        margin: 2px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .home-display {
+        h1 {
+            align-self: center;
+        }
+    }
+    .portfolio-form-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .submit-button {
+            align-self: center;
+        }
+    }
+    .portfolio-manager-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .two-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            input { 
+                justify-content: center;
+
+            }
+
+            .submit-button {
+                align-self: center;
+            }
+
+            .description {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                textarea {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 1500px) {
+    .portfolioItem {
+        .description {
+            display: none;
+        }
+
+        
+    }
+}

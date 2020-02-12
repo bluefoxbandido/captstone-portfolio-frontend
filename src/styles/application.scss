@@ -1,0 +1,48 @@
+body {
+  background-color: gray;
+  height: 100%;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  background-color: gray; 
+}
+
+.navLinks {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  width: 500px;
+  height: 10vh;
+  text-decoration: none;
+  margin-top: 1%;
+  
+  ul {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+
+    li {
+      :hover {
+        border-bottom: 2px solid white;
+        color: white;
+        text-decoration: none;
+
+      }
+
+      a {
+        color: black;
+                
+        }
+
+        
+
+
+
+      
+
+    }
+  }
+}
