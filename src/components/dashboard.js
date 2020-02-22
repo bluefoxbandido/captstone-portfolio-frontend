@@ -100,7 +100,6 @@ class Dashboard extends Component {
         return (
             <div className='portfolio-manager-wrapper'>
                 <div className='left-column'>
-                    <button onClick={this._handleLogout}>Logout</button>
                     <PortfolioForm
                         handleNewFormSubmission={this.handleNewFormSubmission}
                         handleEditFormSubmission={this.handleEditFormSubmission}

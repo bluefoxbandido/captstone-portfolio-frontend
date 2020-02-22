@@ -5,8 +5,14 @@ import AuthHelperMethods from './auth.helper.methods';
 
 
 class Login extends Component {
+    constructor(props) {
+        super(props);
 
-    /* In order to utilize our authentication methods within the AuthService class, we want to instantiate a new object */
+        this.state = {
+            loggedIn: "false"
+        }
+    }
+    
     Auth = new AuthHelperMethods();
 
     state = {
@@ -14,7 +20,6 @@ class Login extends Component {
         password: ""
     }
 
-    /* Fired off every time the use enters something into the input fields */
     _handleChange = (e) => {
         this.setState(
             {
@@ -24,25 +29,27 @@ class Login extends Component {
     }
 
     handleFormSubmit = (e) => {
-        
         e.preventDefault();
-        /* Here is where all the login logic will go. Upon clicking the login button, we would like to utilize a login method that will send our entered credentials over to the server for verification. Once verified, it should store your token and send you to the protected route. */
+
         this.Auth.login(this.state.email, this.state.password)
             .then(res => {
                 if (res === false) {
                     return alert("Sorry those credentials don't exist!");
                 }
-                this.props.history.replace('/');
+                this.props.history.go('/dashboard');
             })
             .catch(err => {
                 alert(err);
             })
+
+        this.setState({
+            loggedIn: "true"
+        })
     }
 
-    componentWillMount() {
-        /* Here is a great place to redirect someone who is already logged in to the protected route */
+    componentDidMount() {
         if (this.Auth.loggedIn())
-            this.props.history.replace('/');
+            this.props.history.replace('/dashboard');
     }
 
     render() {

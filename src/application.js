@@ -7,10 +7,36 @@ import Dashboard from "./components/dashboard";
 import Login from "./components/login";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import AuthHelperMethods from './components/auth.helper.methods';
+
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      isLoggedIn: "false"
+    }
+
+    this._handleLogout = this._handleLogout.bind(this);
+  }
+  Auth = new AuthHelperMethods();
+
+  _handleLogout = () => {
+    this.Auth.logout();
+  }
+  
+  componentDidMount() {
+    
+  }
 
   render() {
+    var toggleShow = "";
+    if (this.Auth.getToken() === null) {
+      console.log("Get Token is Null")
+      toggleShow = "none";
+    }
+
     return (
       <Router>
         <div className="app">
@@ -24,6 +50,9 @@ class App extends Component {
               </li>
               <li>
                 <Link to="/dashboard">Dashboard</Link>
+              </li>
+              <li style={{ display: toggleShow }}>
+                <button onClick={this._handleLogout}>Log Out</button>
               </li>
             </ul>
           </div>
