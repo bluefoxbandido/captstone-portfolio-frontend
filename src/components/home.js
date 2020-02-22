@@ -3,9 +3,7 @@ import GetAll from '../dashboard/get.all.portfolioItems'
 
 export default class Home extends Component {
 
-    componentDidUpdate() {
-        window.history.go()
-    }
+    
 
 
     render() {

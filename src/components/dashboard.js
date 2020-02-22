@@ -2,7 +2,10 @@ import React, { Component } from 'react'
 import PortfolioForm from '../dashboard/portfolio.form'
 import PortfolioList from '../dashboard/portfolio.list'
 
-export default class Dashboard extends Component {
+import withAuth from './with.auth';
+import AuthHelperMethods from './auth.helper.methods';
+
+class Dashboard extends Component {
     constructor(props) {
         super(props)
 
@@ -19,6 +22,15 @@ export default class Dashboard extends Component {
 
         this.clearPortfolioToEdit = this.clearPortfolioToEdit.bind(this);
         this.getPortfolioItems = this.getPortfolioItems.bind(this);
+
+        this._handleLogout = this._handleLogout.bind(this);
+    }
+
+    Auth = new AuthHelperMethods();
+
+    _handleLogout = () => {
+      this.Auth.logout()
+      this.props.history.replace('/login');
     }
 
     clearPortfolioToEdit() {
@@ -69,6 +81,7 @@ export default class Dashboard extends Component {
         fetch(`https://capstone-portfolio-backend.herokuapp.com/portfolioItems`)
             .then(response => response.json())
             .then(response => {
+                console.log(response)
                 this.setState({
                     portfolioItems: [...response]
                 })
@@ -78,14 +91,16 @@ export default class Dashboard extends Component {
     }
 
     componentDidMount() {
-        this.getPortfolioItems();
+        this.getPortfolioItems()
     }
+
 
 
     render() {
         return (
             <div className='portfolio-manager-wrapper'>
                 <div className='left-column'>
+                    <button onClick={this._handleLogout}>Logout</button>
                     <PortfolioForm
                         handleNewFormSubmission={this.handleNewFormSubmission}
                         handleEditFormSubmission={this.handleEditFormSubmission}
@@ -103,8 +118,9 @@ export default class Dashboard extends Component {
                         handleEditClick={this.handleEditClick}
                     />
                 </div>
-                
             </div>
         )
     }
 }
+
+export default withAuth(Dashboard);

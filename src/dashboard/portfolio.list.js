@@ -14,12 +14,13 @@ const PortfolioList = (props) => {
                     </div>
                     <div className="actions">
                         <button className="action">Edit</button>
-                        <a 
+                        <button 
+                          
                           className="actions"
                           onClick={() => props.handleDeleteClick(portfolioItem)}
                         >
                             X
-                        </a>
+                        </button>
                     </div>
                 </div>
 

@@ -9,7 +9,7 @@ export default class GetAll extends Component {
         }
     }
 
-    async componentDidMount() {
+    componentDidMount() {
         fetch(`https://capstone-portfolio-backend.herokuapp.com/portfolioItems`)
             .then(res => res.json())
             .then(portfolioItems => {
