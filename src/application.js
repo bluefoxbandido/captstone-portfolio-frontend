@@ -7,16 +7,15 @@ import Dashboard from "./components/dashboard";
 import Login from "./components/login";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import AuthHelperMethods from './components/auth.helper.methods';
-
+import AuthHelperMethods from "./components/auth.helper.methods";
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       isLoggedIn: "false"
-    }
+    };
 
     this._handleLogout = this._handleLogout.bind(this);
   }
@@ -24,16 +23,14 @@ class App extends Component {
 
   _handleLogout = () => {
     this.Auth.logout();
-  }
-  
-  componentDidMount() {
-    
-  }
+  };
+
+  componentDidMount() {}
 
   render() {
     var toggleShow = "";
     if (this.Auth.getToken() === null) {
-      console.log("Get Token is Null")
+      console.log("Get Token is Null");
       toggleShow = "none";
     }
 
